@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+    color: white;
+}
+
+/* Top input bar */
+.w {
+    display: grid;
+    grid-template-columns: 1fr 180px 90px;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    align-items: center;
+}
+
+.w p {
+    grid-column: 1 / -1;
+    font-size: 28px;
+    margin: 0 0 10px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.w input,
+.w button {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+}
+
+.w input {
+    background: #2f2f4f;
+    color: white;
+    outline: none;
+}
+
+.w input::placeholder {
+    color: #aaa;
+}
+
+.w button {
+    background: #5b7cff;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.w button:hover {
+    background: #7994ff;
+}
+
+/* Todo list grid */
+.rolex {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 140px 80px;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Todo cells */
+.rolex > div,
+.rolex > button {
+    background: #2f2f4f;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+/* Name */
+.rolex > div:first-child {
+    font-weight: bold;
+}
+
+/* Date */
+.rolex > div:nth-child(3n-1) {
+    text-align: center;
+    color: #bbb;
+}
+
+/* Delete button */
+.rolex > button {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.rolex > button:hover {
+    background: #ff6b6b;
+}
