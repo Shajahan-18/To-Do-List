@@ -1,46 +1,43 @@
-let to =[];
-        
+let to = JSON.parse(localStorage.getItem("todos")) || [];
 
+todolist();
 
-        todolist();
-        function todolist() {
-            let todohtml = "";
+function saveTodos() {
+    localStorage.setItem("todos", JSON.stringify(to));
+}
 
-            for (let i = 0; i < to.length; i++) {
-                const todoobject = to[i];
-                const name=todoobject.name;
-                const duedate=todoobject.duedate;
+function todolist() {
+    let todohtml = "";
+    for (let i = 0; i < to.length; i++) {
+        const todoobject = to[i];
+        const name = todoobject.name;
+        const duedate = todoobject.duedate;
+        const html = `<div>${name}</div>
+        <div>${duedate}</div>
+        <button onclick="deleteTodo(${i})">Delete</button>
+`;
+        todohtml += html;
+    }
+    document.querySelector(".z").innerHTML = todohtml;
+}
 
-                const html = `<div>${name}</div>
-                <div>${duedate}</div>
-                <button onclick="deleteTodo(${i})">Delete</button>
-` ;
-                todohtml += html;
-            }
-            
-            document.querySelector(".z").innerHTML = todohtml;
-        }
-        function deleteTodo(i) {
-                to.splice(i, 1);
-                todolist();
-            }
+function deleteTodo(i) {
+    to.splice(i, 1);
+    saveTodos();
+    todolist();
+}
 
-
-
-
-        function addtodo() {
-            const u = document.querySelector("#r");
-            const y = u.value;
-            const datee=document.querySelector('.b')
-            const duedaate=datee.value
-
-            to.push({
-                name:y,
-                duedate:duedaate
-            });
-            
-            u.value = "";
-            todolist();
-
-
-        }
+function addtodo() {
+    const u = document.querySelector("#r");
+    const y = u.value;
+    const datee = document.querySelector('.b');
+    const duedaate = datee.value;
+    if (!y) return;
+    to.push({
+        name: y,
+        duedate: duedaate
+    });
+    saveTodos();
+    u.value = "";
+    todolist();
+}
